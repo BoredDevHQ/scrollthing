@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>scrollwowo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="theme-toggle" class="toggle-container">
+        <span id="toggle-label">Light</span>
+        <label class="switch">
+            <input type="checkbox" id="toggle-switch">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="container">
+        <div class="box">hiii</div>
+        <div class="box">this</div>
+        <div class="box">super</div>
+        <div class="box">duper</div>
+        <div class="box">cool</div>
+        <div class="box">Box 6</div>
+    </div>
+
+    <script>
+        // Toggle dark mode
+        const toggleSwitch = document.getElementById('toggle-switch');
+        const toggleLabel = document.getElementById('toggle-label');
+        const body = document.body;
+
+        toggleSwitch.addEventListener('change', () => {
+            if (toggleSwitch.checked) {
+                body.classList.add('dark-mode');
+                toggleLabel.textContent = 'Dark';
+            } else {
+                body.classList.remove('dark-mode');
+                toggleLabel.textContent = 'Light';
+            }
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            if (toggleSwitch.checked) {
+                const mouseX = e.clientX;
+                const mouseY = e.clientY + window.scrollY; 
+
+                body.style.setProperty('--mouse-x', `${mouseX}px`);
+                body.style.setProperty('--mouse-y', `${mouseY}px`);
+            }
+        });
+
+        const boxes = document.querySelectorAll('.box');
+        const handleScroll = () => {
+            const triggerBottom = window.innerHeight / 5 * 4; 
+            boxes.forEach(box => {
+                const boxTop = box.getBoundingClientRect().top;
+                if (boxTop < triggerBottom) {
+                    box.classList.add('show');
+                } else {
+                    box.classList.remove('show');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); 
+    </script>
+</body>
+</html>
