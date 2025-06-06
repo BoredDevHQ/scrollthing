@@ -1,4 +1,2 @@
 # scrollthing
-a web app that makes certain things appear when you scroll down!
-It is just a simple bit of HTML and CSS but i like to show some things off that i make!
-Also there is a dark mode, but it was a bit too dark so i added a flashlight to see better!
+A start in web development of mine, feel free to look through code that kind of.. sucks. But if you're a beginner and need some inspo go have a look and good luck on your journey :D
